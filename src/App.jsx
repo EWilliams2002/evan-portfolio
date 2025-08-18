@@ -10,7 +10,7 @@ function App() {
     <>
       <div>
         <header className="nav-bar">
-            <img src="/assets/react.svg" className="nav-logo" alt="React logo" />
+            <img src="/assets/react_logo.png" className="nav-logo" alt="React logo" />
             <nav>
                 <ul className="nav-list">
                     <li className="nav-list-item">Pricing</li>
