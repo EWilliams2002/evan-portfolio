@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import reactLogo from './assets/react_logo.png'
 import viteLogo from '/vite.svg'
 import './App.css'
 
@@ -10,11 +10,11 @@ function App() {
     <>
       <div>
         <header className="nav-bar">
-            <img src="/assets/react_logo.png" className="nav-logo" alt="React logo" />
+            <img src={reactLogo} className="nav-logo" alt="React logo" />
             <nav>
                 <ul className="nav-list">
-                    <li className="nav-list-item">Pricing</li>
                     <li className="nav-list-item">About</li>
+                    <li className="nav-list-item">Projects</li>
                     <li className="nav-list-item">Contact</li>
                 </ul>
             </nav>
