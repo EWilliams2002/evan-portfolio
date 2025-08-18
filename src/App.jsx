@@ -9,13 +9,17 @@ function App() {
   return (
     <>
       <div>
-
-        {/* <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a> */}
+        <header className="nav-bar">
+            <img src="/assets/react.svg" className="nav-logo" alt="React logo" />
+            <nav>
+                <ul className="nav-list">
+                    <li className="nav-list-item">Pricing</li>
+                    <li className="nav-list-item">About</li>
+                    <li className="nav-list-item">Contact</li>
+                </ul>
+            </nav>
+        </header>
+        
 
       </div>
 
