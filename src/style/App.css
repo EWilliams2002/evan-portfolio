@@ -1,0 +1,101 @@
+#root {
+  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  display: flex;
+  margin: 0 auto;
+  /* padding: 2rem; */
+  text-align: center;
+  min-height: 100vh;
+}
+
+
+
+
+#nav {
+  display: block;
+  position: fixed;
+  text-align: left;
+  width: 20em;
+  min-height: 100vh;
+  padding: 10px;
+  
+  
+  background-color: blue;
+}
+
+.nav-list {
+  
+  position: relative;
+  display: block;
+  
+  
+}
+
+.nav-list-item {
+  margin: 0;
+}
+
+#me, #projects, #links {
+  margin-top: 25px;
+}
+
+
+#home {
+  width: 100vw;
+  height: auto;
+  margin-left: 20em;
+
+  text-align: left;
+  padding: 2em;
+}
+
+#hdsht {
+  width: 155px;
+}
+
+
+
+
+
+
+
+/* #logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+} */
+
+
+
+
+/* .read-the-docs {
+  color: #888;
+} */
