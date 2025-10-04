@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React from 'react'
 
 
 import './style/App.css'
@@ -7,13 +7,23 @@ import Home from "./components/home"
 
 function App() {
   // const [count, setCount] = useState(0)
-  
+
+  const [open, setOpen] = React.useState(true);
+
   return (
     <>
     
-      <Nav />
+      <Nav 
+        navState = {open}
+        setNavState = {() => setOpen(!open)}
       
-      <Home />
+      />
+      
+      <Home 
+        navState = {open}
+        setNavState = {() => setOpen(!open)}
+      
+      />
 
 
 

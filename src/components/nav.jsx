@@ -1,41 +1,52 @@
-import reactLogo from '../assets/react_logo.png'
+import React from "react";
+import homeIcon from '../assets/home.svg'
+import menuIcon from '../assets/menu.svg'
+import NavList from '../components/tinyComp/navList'
 
 
-export default function nav() {
+export default function nav(props) {
+
+  // turn home bar and navlists into components
+  
+  // const [open, setOpen] = React.useState(true);
+
+
+
   return (
-    <div id="nav">
+    <div id="nav" className={props.navState ? "open-nav" : "closed-nav"}>
         
         
       <p>Evan Williams</p>
 
-      <p>Home</p>
-      
 
-      
-      <div class="nav-list" id="me">
-          <p class="nav-list-item">Me</p>
-          <p class="nav-list-item">Photography</p>
-          <p class="nav-list-item">Writing</p>
-          <p class="nav-list-item">3D Models</p>
-      </div>
-
-
-      
-      <div class="nav-list" id="projects">
-          <p class="nav-list-item">Projects</p>
-          <p class="nav-list-item">Wordle</p>
-          <p class="nav-list-item">CSP Solver</p>
-          <p class="nav-list-item">Kanji Review App</p>
-      </div>
-      
-
-      
-      <div class="nav-list" id="links">
-          <p class="nav-list-item">Links</p>
-          <p class="nav-list-item">Linkedin</p>
-          <p class="nav-list-item">GitHub</p>
-      </div>
+      <div id="home-bar">
             
+        <img src={homeIcon} class="hb-item" id="home_icon" alt="..." />
+        <p class="hb-item" >Home</p>
+            
+      </div>
+        
+      <div id="nav-box" className={props.navState ? "open-navBox" : "closed-navBox"}>
+        
+        <img src={menuIcon} onClick={props.setNavState} class="nb-item" id="menu-icon" alt="..." />
+
+      </div>
+      
+
+      <NavList 
+        titleName = "Me"
+        items = {["Photography", "Writing", "3D Models"]}
+      />
+
+      <NavList 
+        titleName = "Projects"
+        items = {["Wordle", "CSP Solver", "Kanji Review App"]}
+      />
+
+      <NavList 
+        titleName = "Links"
+        items = {["Linkedin", "Github"]}
+      />
         
     </div>
   )

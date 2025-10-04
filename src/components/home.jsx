@@ -1,9 +1,9 @@
 import hdshtExample from '../assets/gon.png'
 
 
-export default function home() {
+export default function home(props) {
     return (
-        <div id="home">
+        <div id="home" className={props.navState ? "open-home" : "closed-home"}>
 
             <div>
                 Hello my name is Evan !
