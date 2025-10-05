@@ -1,7 +1,12 @@
-export default function navItem({word}) {
+export default function navItem(props) {
+
+  
+
+    
+
     return (
         <>
-            <p class="nav-list-item">{word}</p>
+            <p class="nav-list-item" onClick={props.clicked}>{props.word}</p>
 
         </>
     )

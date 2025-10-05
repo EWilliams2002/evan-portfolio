@@ -7,12 +7,13 @@ export default function navList(props) {
     const navItems = props.items.map( item => {
         return (
             <NavItem 
-                word={item}
+                word={item} 
+                clicked={() => props.clicked(item)}
             />
         )
     })
 
-    console.log(navItems);
+    
     return (
         <div class="nav-list">
           <NavTitle titleName={props.titleName}/>
