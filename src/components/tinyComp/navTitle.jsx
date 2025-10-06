@@ -4,7 +4,7 @@
 export default function navTitle({titleName}) {
     return (
         <>
-            <p class="nav-list-item">{titleName}</p>
+            <p class="nav-list-title">{titleName}</p>
 
         </>
     )

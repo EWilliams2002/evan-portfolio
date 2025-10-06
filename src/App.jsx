@@ -4,7 +4,7 @@ import React from 'react'
 import './style/App.css'
 import Home from "./components/home"
 import homeIcon from './assets/home.svg'
-import menuIcon from './assets/menu.svg'
+import navIcon from './assets/back.svg'
 
 // Components
 import NavList from './components/tinyComp/navList'
@@ -57,7 +57,7 @@ function App() {
       <div id="nav" className={open ? "open-nav" : "closed-nav"}>
         
         
-        <p>Evan Williams</p>
+        <p id="myName">Evan Williams</p>
   
         
         <div id="home-bar">
@@ -67,9 +67,9 @@ function App() {
               
         </div>
           
-        <div id="nav-box" className={open ? "open-navBox" : "closed-navBox"}>
+        <div id="nav-box" onClick={() => setOpen(!open)} className={open ? "open-navBox" : "closed-navBox"}>
           
-          <img src={menuIcon} onClick={() => setOpen(!open)} class="nb-item" id="menu-icon" alt="..." />
+          <img src={navIcon} class={open ? "open-navIcon" : "closed-navIcon"} id="nav-icon" alt="..." />
   
         </div>
         
@@ -92,7 +92,7 @@ function App() {
         Click on the Vite and React logos to learn more
       </p> */}
 
-
+      {/* <p id="icon-attr">Icons by <a href="https://icons8.com/" style={{ textDecoration: "underline" }}>Icons8</a></p> */}
     </>
   )
 }
