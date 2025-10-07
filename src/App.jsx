@@ -8,6 +8,7 @@ import navIcon from './assets/back.svg'
 
 // Components
 import NavList from './components/tinyComp/navList'
+import Wordle from './components/wordle'
 
 // Data
 import navData from './data/navLists'
@@ -22,14 +23,14 @@ function App() {
 
 
   function readClicked(param) {
-    //setScreen(param);
+    setScreen(param);
     console.log("screen clicked: " + param);
   }
 
   function getScreenComponent(screen) {
     switch (screen) {
       case "Wordle":
-        return //<Wordle />;
+        return <Wordle />;
       case "Photography":
         return //<Photography />;
       default:
@@ -54,13 +55,17 @@ function App() {
   return (
     <>
 
+
+
+
+
       <div id="nav" className={open ? "open-nav" : "closed-nav"}>
         
         
         <p id="myName">Evan Williams</p>
   
         
-        <div id="home-bar">
+        <div id="home-bar" onClick={() => {setScreen(""); readClicked("Home"); setOpen(true)}}>
               
           <img src={homeIcon} class="hb-item" id="home_icon" alt="..." />
           <p class="hb-item" >Home</p>
@@ -78,21 +83,31 @@ function App() {
               
       </div>
 
+
+
+      
+
+      
+
+
+
       {getScreenComponent(screen)}
+
+      <div id="icon-attr">
+
+          Icons by <a href="https://icons8.com/" style={{ textDecoration: "underline" }}>Icons8</a>
+
+      </div>
+
+
+
+        
+
+
+
       
-      {/* <Home 
-        navState = {open}
-        setNavState = {() => setOpen(!open)}
       
-      /> */}
-
-
-
-      {/* <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
-
-      {/* <p id="icon-attr">Icons by <a href="https://icons8.com/" style={{ textDecoration: "underline" }}>Icons8</a></p> */}
+    
     </>
   )
 }

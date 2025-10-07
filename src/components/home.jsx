@@ -3,7 +3,8 @@ import Icon from '../components/tinyComp/icon'
 
 import linkedinIcon from '../assets/linkedin.png'
 
-import HomeBlock from '../components/homeBlock'
+import rowData from '../data/rowData';
+import HomeBlock from '../components/homeBlock';
 
 
 
@@ -33,7 +34,7 @@ export default function home(props) {
 
             
 
-            <div class="home-text">
+            <div class="home-text" id="opening-text">
                 As a seasoned software engineer, 
                 I've dedicated my career to crafting 
                 elegant, high-performing applications 
@@ -54,7 +55,9 @@ export default function home(props) {
 
 
 
-            {/* PUT HOME BLOCKS HERE TO-DO ! */}
+            {rowData.map((block, idx) => (
+                <HomeBlock block={block} key={idx} />
+            ))}
 
 
 

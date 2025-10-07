@@ -60,7 +60,25 @@
 }
 
 
-#nav {
+/* #nav {
+  display: block;
+  position: fixed;
+  text-align: left;
+  width: 17rem;
+  min-height: 100vh;
+  padding: 10px;
+  
+  
+  background-color: #2d332d;
+} */
+
+
+
+
+.open-nav {
+  left: 0px;
+  transition: left 0.5s;
+
   display: block;
   position: fixed;
   text-align: left;
@@ -71,17 +89,19 @@
   
   background-color: #2d332d;
 }
-
-
-
-
-.open-nav {
-  left: 0px;
-  transition: left 0.5s;
-}
 .closed-nav {
   left: -293px !important;
   transition: left 0.5s;
+
+  display: block;
+  position: fixed;
+  text-align: left;
+  width: 17rem;
+  min-height: 100vh;
+  padding: 10px;
+  
+  
+  background-color: #2d332d;
 }
 
 
@@ -113,12 +133,12 @@
 
 
 .open-home {
-  margin-left: 25em;
+  margin-left: 22rem;
   transition: margin-left 0.5s;
 }
 
 .closed-home {
-  margin-left: 0em !important;
+  margin-left: 2rem !important;
   transition: margin-left 0.5s;
 }
 
@@ -153,11 +173,11 @@
 #home {
   width: 100vw;
   height: auto;
-  margin-left: 20em;
-  margin-left: 20em;
+  
 
   text-align: left;
   
+  margin-bottom: 100px;
 }
 
 #hdsht {
@@ -174,10 +194,13 @@
   display: flex;
   height: 25px;
   justify-content: left;
-}.hb-item {
+}
+
+.hb-item {
   margin-top: auto;
   margin-bottom: auto;
 }
+
 #home_icon {
   margin-right: 6px;
   width: 15px;
@@ -219,7 +242,8 @@
   }
 
   #home {
-    margin-left: 0rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
   }
 
 
@@ -238,7 +262,14 @@
   
   max-width: 700px;
   margin: 0 auto;
+  /* margin-left: 2rem;
+  margin-right: 2rem; */
 
+}
+
+#opening-text {
+  margin-top: 50px;
+  margin-bottom: 90px;
 }
 
 #dotted-line {
@@ -271,17 +302,51 @@
   margin-right: 4px;
 }
 
+
+
+
+
+/* #main-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+} */
+
 #icon-attr {
-  position: fixed;
   font-size: 10px;
-  bottom: 5px;
-  right: 8px;
   color: #888;
+
+  position: static;
+  width: 180px;
+  height: 20px;
+  margin-top: auto;
+  margin-right: 2em; /* Adjust as needed */
+  margin-bottom: 4em; /* Adjust as needed */
+  text-align: right;
+  width: auto;
 }
+
+
+
+
 
 /* CSS to fix into homeblock code */
 
-/* @media not (min-width: 640px) { 
+#homeBlock {
+  display: flex;
+  margin-top: 55px;
+  margin-bottom: 20px;
+}
+
+.rows {
+  width: 100%;
+}
+
+span#rowColTwo {
+  margin-right: 0;
+}
+
+@media not (min-width: 640px) { 
   
   #dotted-line {
     display: none !important;
@@ -291,14 +356,14 @@
     gap: 0.125rem;
   }
 
-  .rowThing {
+  .rowEntry {
     flex-direction: column;
   }
 
 
 }
 
-.rowThing {
+.rowEntry {
   display: flex;
   max-width: 700px;
   margin: 0 auto;
@@ -307,4 +372,4 @@
 
 .row-item {
   margin: 0 10px;
-} */
+}

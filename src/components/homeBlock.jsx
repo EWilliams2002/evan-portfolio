@@ -1,44 +1,32 @@
 import rowData from '../data/rowData'
 
 
-export default function homeblock(props) {
+export default function HomeBlock({ block }) {
+  const rows = block.rows.map(entry => (
+    <div class="rowEntry" key={entry.rowHead}>
 
-    const rows = rowData.map( entry => {
-        return (
+      <span id="row-Head" class="row-item">{entry.rowHead}</span>
 
-            <div class="rowEntry">
-        
-                <span id="row-Head"  class="row-item" >{entry.rowHead}</span>
+      <div id="dotted-line"></div>
 
-                <div  id="dotted-line"></div>
+      <span id="rowColOne" class="row-item">{entry.rowColOne}</span>
+      <span id="rowColTwo" class="row-item">{entry.rowColTwo}</span>
 
-                <span id="rowColOne" class="row-item" >{entry.rowColOne}</span>
+    </div>
+  ));
 
-                <span id="rowColTwo" class="row-item" >{entry.rowColTwo}</span>
+  return (
+    <div id="homeBlock" class="home-text">
 
-            </div>
-        )
-    })
+      <div class='rowTitleCols'>
+        <span class="row-Titles">{block.title}</span>
+      </div>
 
-
-    return (
-        <>
-            <div class='rowTitleCols'>
-
-                <span class="row-Titles">
-                    {props.title}
-                </span>
-
-            </div>
-
-
-            <div class="rows">
-                {rows}
-            </div>
-            
-
-        </>
-    )
+      <div class="rows">
+        {rows}
+      </div>
+      
+    </div>
+  );
 }
-
 
