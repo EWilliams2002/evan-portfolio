@@ -2,56 +2,16 @@ export default [
   {
     title: "Education",
     rows: [
-      { rowHead: "University", rowColOne: "MIT", rowColTwo: "1234567" },
-      { rowHead: "Graduation", rowColOne: "2020", rowColTwo: "1234567" }
+      { rowHead: "Loyola Marymount University", rowColOne: "MS Comp Sci", rowColTwo: "2025-    " },
+      { rowHead: "University of Arizona", rowColOne: "BS Info Sci", rowColTwo: "2020-24" }
     ]
   },
+  
   {
-    title: "Education",
+    title: "Work",
     rows: [
-      { rowHead: "University", rowColOne: "MIT", rowColTwo: "1234567" },
-      { rowHead: "Graduation", rowColOne: "2020", rowColTwo: "1234567" }
-    ]
-  },
-  {
-    title: "Education",
-    rows: [
-      { rowHead: "University", rowColOne: "MIT", rowColTwo: "1234567" },
-      { rowHead: "Graduation", rowColOne: "2020", rowColTwo: "1234567" }
-    ]
-  },
-  {
-    title: "Education",
-    rows: [
-      { rowHead: "University", rowColOne: "MIT", rowColTwo: "1234567" },
-      { rowHead: "Graduation", rowColOne: "2020", rowColTwo: "1234567" }
-    ]
-  },
-  {
-    title: "Education",
-    rows: [
-      { rowHead: "University", rowColOne: "MIT", rowColTwo: "1234567" },
-      { rowHead: "Graduation", rowColOne: "2020", rowColTwo: "1234567" }
-    ]
-  },
-  {
-    title: "Education",
-    rows: [
-      { rowHead: "University", rowColOne: "MIT", rowColTwo: "1234567" },
-      { rowHead: "Graduation", rowColOne: "2020", rowColTwo: "1234567" }
-    ]
-  },
-  {
-    title: "Education",
-    rows: [
-      { rowHead: "University", rowColOne: "MIT", rowColTwo: "1234567" },
-      { rowHead: "Graduation", rowColOne: "2020", rowColTwo: "1234567" }
-    ]
-  },
-  {
-    title: "Experience",
-    rows: [
-      { rowHead: "Company", rowColOne: "TechCorp", rowColTwo: "1234567" }
+      { rowHead: "Adore Dessert Café", rowColOne: "Barista", rowColTwo: "2025-    " },
+      { rowHead: "University of Arizona", rowColOne: "Student Game Designer", rowColTwo: "2023-24" }
     ]
   }
 ]

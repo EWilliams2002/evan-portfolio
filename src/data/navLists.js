@@ -22,7 +22,7 @@ export default [
     {
         id: 1,
         titleName: "Projects",
-        items: ["Wordle", "CSP Solver", "Kanji Review App"]
+        items: {"Wordle": 'site', "CSP Solver":'prog', "Kanji Review App":'prog' }
     },
 
 
@@ -30,6 +30,6 @@ export default [
     {
         id: 2,
         titleName: "Links",
-        items: ["Linkedin", "Github"]
+        items: {"Linkedin": 'Linkedin', "GitHub": 'GitHub'}
     },
 ]

@@ -1,4 +1,4 @@
-import rowData from '../data/rowData'
+
 
 
 export default function HomeBlock({ block }) {
@@ -16,7 +16,7 @@ export default function HomeBlock({ block }) {
   ));
 
   return (
-    <div id="homeBlock" class="home-text">
+    <div id="homeblock-flex" class="home-text">
 
       <div class='rowTitleCols'>
         <span class="row-Titles">{block.title}</span>

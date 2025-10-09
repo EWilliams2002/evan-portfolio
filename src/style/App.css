@@ -56,9 +56,30 @@
 }
 
 #myName {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 1.8em;
+  margin-left: 10px;
+  font-size: 1.15em;
   cursor: default;
 }
 
+#myNameIcon {
+  width: 80px;
+  height: 80px;
+  margin-right: 12px;
+  font-weight: bold;
+}
+
+#myNameText {
+  font-weight: bold;
+  width: 50px;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  margin-top: 29.8px;
+}
 
 /* #nav {
   display: block;
@@ -105,6 +126,22 @@
 }
 
 
+#siteNav::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -2px; /* Sit just outside/next to nav */
+  width: 2px;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 12;
+  /* Gradient fades from nav color to transparent */
+  background: linear-gradient(
+    to right,
+    #262626 0%,
+    rgba(45, 51, 45, 0) 100%
+  );
+}
 
 
 .open-navBox {
@@ -157,7 +194,9 @@
 
 .nav-list-title {
   cursor: default;
-  margin: 0;
+  margin: 8px 0;
+  font-weight: 600;
+  font-size: 0.80em;
 }
 
 .nav-list-item:hover, #nav-icon:hover, #home-bar:hover {
@@ -212,6 +251,7 @@
   position: fixed;
   left: 300px;
   top: 20px;
+  z-index: 9999;
 
   border-radius: 12px;
   width: 50px;
@@ -237,9 +277,10 @@
 
 @media not (min-width: 1024px) { 
   
-  #nav {
-  visibility: hidden;
+  #siteNav {
+    visibility: hidden;
   }
+
 
   #home {
     margin-left: 2rem;
@@ -332,18 +373,36 @@
 
 /* CSS to fix into homeblock code */
 
-#homeBlock {
+#homeblock-flex {
   display: flex;
-  margin-top: 55px;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  max-width: 700px;
+  margin: 0 auto 20px auto;
+}
+
+.rowTitleCols {
+  min-width: 140px; /* Adjust width as needed */
+  /* margin-right: 32px;  */
+  display: flex;
+  align-items: flex-start;
+}
+
+.row-Titles {
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 .rows {
-  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
 
 span#rowColTwo {
   margin-right: 0;
+  white-space: pre;
 }
 
 @media not (min-width: 640px) { 
@@ -365,11 +424,11 @@ span#rowColTwo {
 
 .rowEntry {
   display: flex;
-  max-width: 700px;
-  margin: 0 auto;
+  align-items: center;
   
 }
 
 .row-item {
   margin: 0 10px;
+  white-space: pre;
 }

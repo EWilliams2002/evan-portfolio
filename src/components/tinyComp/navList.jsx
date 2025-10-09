@@ -2,22 +2,25 @@ import NavTitle from "./navTitle"
 import NavItem from "./navItem"
 
 
+
+// At the top of your component file:
+const images = import.meta.glob('../../assets/*.png', { eager: true });
+
 export default function navList(props) {
-
-    const navItems = props.items.map( item => {
-        return (
-            <NavItem 
-                word={item} 
-                clicked={() => props.clicked(item)}
-            />
-        )
-    })
-
-    
+  const navItems = Object.entries(props.items).map(([key, value]) => {
+    const imgSrc = images[`../../assets/${value}.png`]?.default;
     return (
-        <div class="nav-list">
-          <NavTitle titleName={props.titleName}/>
-          {navItems}
+      <div id='home-bar' key={key}>
+        <img src={imgSrc} className="hb-item" id="home_icon" alt="..." />
+        <NavItem word={key} clicked={() => props.clicked(key)} />
       </div>
-    )
+    );
+  });
+
+  return (
+    <div className="nav-list">
+      <NavTitle titleName={props.titleName}/>
+      {navItems}
+    </div>
+  );
 }

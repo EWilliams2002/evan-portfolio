@@ -1,10 +1,11 @@
 import hdshtExample from '../assets/me.jpg'
 import Icon from '../components/tinyComp/icon'
 
-import linkedinIcon from '../assets/linkedin.png'
+import linkedinIcon from '../assets/Linkedin.svg'
+import githubIcon from '../assets/GitHub.svg'
 
 import rowData from '../data/rowData';
-import HomeBlock from '../components/homeBlock';
+import HomeBlock from './tinyComp/homeBlock';
 
 
 
@@ -23,7 +24,7 @@ export default function home(props) {
                 <div class="heading-icons">
 
                     <Icon link={'https://www.linkedin.com/in/evanlewiswilliamsdev/'} loco={linkedinIcon} />
-                    {/* <Icon link={''} loco={'github'} /> */}
+                    <Icon link={'https://github.com/EWilliams2002'} loco={githubIcon} />
 
                     
                 </div>
@@ -35,21 +36,17 @@ export default function home(props) {
             
 
             <div class="home-text" id="opening-text">
-                As a seasoned software engineer, 
-                I've dedicated my career to crafting 
-                elegant, high-performing applications 
-                that solve real-world problems. With a 
-                strong foundation in computer science 
-                principles and a passion for emerging 
-                technologies, I approach each project 
-                with a meticulous attention to detail 
-                and a drive to deliver exceptional results.
-                Whether I'm architecting large-scale 
-                enterprise systems or prototyping innovative
-                new features, I take pride in writing 
-                clean, maintainable code that not only 
-                meets the functional requirements, but 
-                also adheres to industry best practices.
+                Hello, I'm Evan, a highly motivated and determined 
+                individual passionate about delivering exceptional 
+                results to drive success within your company. As a 
+                recent graduate from the University of Arizona with 
+                a Bachelor’s Degree in Information Science, coursework 
+                has provided programming skills in languages like Python, 
+                Java, C#, HTML, CSS, JavaScript, and R. Currently pursuing 
+                a master's degree in computer science at Loyola Marymount 
+                University, expected to graduate in Spring 2027, I am 
+                dedicated to leveraging time and effort to enhance academic 
+                performance and professional skills.
             </div>
 
 

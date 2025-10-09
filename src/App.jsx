@@ -5,6 +5,7 @@ import './style/App.css'
 import Home from "./components/home"
 import homeIcon from './assets/home.svg'
 import navIcon from './assets/back.svg'
+import logo from './assets/LOGO TRAN.svg'
 
 // Components
 import NavList from './components/tinyComp/navList'
@@ -23,6 +24,13 @@ function App() {
 
 
   function readClicked(param) {
+    if (screen === "Wordle" && param !== "Wordle") {
+        // Get a reference to the Wordle instance and call saveWordleState
+        // (You might need to use refs or move saveWordleState to a global utility for easy access)
+        // For demo: window.saveWordleState() if you assign the function globally inside Wordle
+        if (window.saveWordleState) window.saveWordleState();
+        console.log("Saved Wordle state before navigating away.");
+    }
     setScreen(param);
     console.log("screen clicked: " + param);
   }
@@ -30,7 +38,10 @@ function App() {
   function getScreenComponent(screen) {
     switch (screen) {
       case "Wordle":
-        return <Wordle />;
+        return <Wordle 
+                  navState={open} 
+                  setNavState={() => setOpen(!open)}
+                />;
       case "Photography":
         return //<Photography />;
       default:
@@ -38,8 +49,8 @@ function App() {
                   navState={open} 
                   setNavState={() => setOpen(!open)} 
                 />;
+    }
   }
-}
 
   const navLists = navData.map((entry) => {
     return (
@@ -59,10 +70,13 @@ function App() {
 
 
 
-      <div id="nav" className={open ? "open-nav" : "closed-nav"}>
+      <div id="siteNav" className={open ? "open-nav" : "closed-nav"}>
         
+        <div id="myName">
+          <img src={logo} id="myNameIcon" alt="logo" />
+          <span id="myNameText">Evan Williams</span>
+        </div>
         
-        <p id="myName">Evan Williams</p>
   
         
         <div id="home-bar" onClick={() => {setScreen(""); readClicked("Home"); setOpen(true)}}>
@@ -82,6 +96,8 @@ function App() {
         {navLists}
               
       </div>
+
+      
 
 
 

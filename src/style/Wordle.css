@@ -53,14 +53,9 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 #wordle {
-  display: flex;
-  /* justify-self: center; */
-  margin-top: 60px;
-  margin-bottom: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 1000px;
-  position: relative;
+  display: block;
+  width: 750px;
+  margin-top: 57px;
   
 }
 
@@ -116,7 +111,7 @@
   margin-right: auto;
 
   width: 50%;
-  height: 450px;
+  height: 500px;
   grid-gap: 12px;
   grid-template-columns: repeat(5, minmax(1px, 1fr));
   text-align: center;
@@ -192,19 +187,14 @@
 
 
 #outerUI {
-  display: block;
+  display: flex;
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
   justify-items: center;
+  width: 700px;
 }
-/* #nav {
-  
-  margin: 20px;
-  width: auto;
-  cursor: pointer;
-  
-} */
+
 
 #wordle .unoList {
   list-style-type: none;
