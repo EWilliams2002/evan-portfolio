@@ -145,6 +145,7 @@ import Wordle from './components/wordle'
 
 // Data
 import navData from './data/navLists'
+import randomWords from './data/randomWords'
 
 
 function App() {
@@ -152,8 +153,10 @@ function App() {
   const [open, setOpen] = React.useState(true);
   const [screen, setScreen] = React.useState("");
 
+  let newWord = randomWords[Math.floor(Math.random() * randomWords.length)];
+
   const [wordleState, setWordleState] = React.useState({
-    currWord: "VALID", // Make uppercase for consistency
+    currWord: newWord, // Make uppercase for consistency
     wordleGame: [
       ["", "", "", "", ""],
       ["", "", "", "", ""],
@@ -164,7 +167,8 @@ function App() {
     ],
     currentCol: 0,
     currentRow: 0,
-    history: []
+    history: [],
+    nonValidKeys: []
   });
 
 
@@ -182,6 +186,7 @@ function App() {
                   setNavState={() => setOpen(!open)}
                   wordleState={wordleState}
                   setWordleState={setWordleState}
+                  screen={screen}
                 />;
       case "Photography":
         return //<Photography />;

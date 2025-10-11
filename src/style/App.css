@@ -219,6 +219,10 @@
   margin-bottom: 100px;
 }
 
+.bolds {
+  color: #6cbb6c;
+}
+
 #hdsht {
   margin-top: 100px;
   width: auto;
@@ -233,6 +237,10 @@
   display: flex;
   height: 25px;
   justify-content: left;
+}
+
+.myTitles {
+  justify-self: center;
 }
 
 .hb-item {

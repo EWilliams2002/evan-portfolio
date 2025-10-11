@@ -19,7 +19,8 @@ export default function home(props) {
 
                 <img src={hdshtExample} class="" id="hdsht" alt="Photo of Me" />
 
-                <h1>Evan Williams</h1>
+                <h1 class='myTitles' >Evan Williams</h1>
+                <h2 class='myTitles' >Student, Developer & Photographer</h2>
 
                 <div class="heading-icons">
 
@@ -41,9 +42,9 @@ export default function home(props) {
                 results to drive success within your company. As a 
                 recent graduate from the University of Arizona with 
                 a Bachelor’s Degree in Information Science, coursework 
-                has provided programming skills in languages like Python, 
-                Java, C#, HTML, CSS, JavaScript, and R. Currently pursuing 
-                a master's degree in computer science at Loyola Marymount 
+                has provided programming skills in languages like <b class='bolds'>Python, 
+                Java, C#, HTML, CSS, JavaScript, and R</b>. Currently pursuing 
+                a master's degree in Computer Science at Loyola Marymount 
                 University, expected to graduate in Spring 2027, I am 
                 dedicated to leveraging time and effort to enhance academic 
                 performance and professional skills.

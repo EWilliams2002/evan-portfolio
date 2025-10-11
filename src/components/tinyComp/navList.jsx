@@ -10,9 +10,9 @@ export default function navList(props) {
   const navItems = Object.entries(props.items).map(([key, value]) => {
     const imgSrc = images[`../../assets/${value}.png`]?.default;
     return (
-      <div id='home-bar' key={key}>
+      <div id='home-bar' key={key} onClick={() => props.clicked(key)}>
         <img src={imgSrc} className="hb-item" id="home_icon" alt="..." />
-        <NavItem word={key} clicked={() => props.clicked(key)} />
+        <NavItem word={key} />
       </div>
     );
   });
