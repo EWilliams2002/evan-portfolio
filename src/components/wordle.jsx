@@ -750,6 +750,45 @@ export default function Wordle(props) {
             if (finalRow) {
                 clearWordleState();
                 console.log('final row');
+                let prevWord = document.getElementById("word5").innerText;
+                let prevResult = document.getElementById("result5").innerText;
+
+                // console.log('prev word:', prevWord);
+                // console.log('prev result:', prevResult);
+
+                document.getElementById("word5").innerText = currWord;
+                document.getElementById("result5").innerText = "X";
+
+                
+
+                for (var h = 0; h < 5; h++) {
+                    
+                    if (h === 4 ) {
+                        document.getElementById("word" + h).innerText = prevWord;
+                        document.getElementById("result" + h).innerText = prevResult
+                    } else {
+
+                        document.getElementById("word" + h).innerText = document.getElementById("word" + (h + 1)).innerText;
+                        document.getElementById("result" + h).innerText = document.getElementById("result" + (h + 1)).innerText;
+                    }
+                }
+                
+                if (history.length <= 5) {
+                    props.setWordleState(prev => ({
+                        ...prev,
+                        history: [...prev.history, { word: currWord, result: "X" }]
+                    }));
+                    console.log('updated history:', [...history, { word: currWord, result: "X" }]);
+                } else {
+                    props.setWordleState(prev => ({
+                        ...prev,
+                        history: [...prev.history.slice(1), { word: currWord, result: "X" }]
+                    }));
+                    console.log('updated history by shifting:', [...history.slice(1), { word: currWord, result: "X" }]);
+                }
+
+                
+
                 // console.log(guessedWord)
                 // console.log(currWord)
                 // console.log(guessedWord.trim() === currWord.trim());
@@ -839,18 +878,31 @@ export default function Wordle(props) {
                     clearWordleState();
                     return;
                 }
+                
+                if (!wordRight && row === 5) {
+                    console.log('didnt guess it right and no guesses left');
+                } else {
+                    setTotalGuess(prev => prev - 1);
+                }
+                
 
-                setTotalGuess(prev => prev - 1);
+
+                console.log(col, row)
 
                 if (row === 6 && !wordRight) {
-                    console.log('didnt guess it right and no guesses left');
+                    
 
                     clearWordleState();
                 }
             }
+
+
             if (clicked_id === "←" && col >= 1) {
                 runBackspace();
             }
+
+
+
         } else {
 
             if (clicked_id === "←" && col >= 1) {
@@ -932,7 +984,8 @@ export default function Wordle(props) {
         console.log('currentCol:', props.wordleState.currentCol);
         console.log('currentRow:', props.wordleState.currentRow);
         console.log('currWord:', props.wordleState.currWord);
-    }, [props.wordleState.wordleGame, props.wordleState.currentCol, props.wordleState.currentRow, props.wordleState.currWord]);
+        console.log('curr total guess', totalGuess);
+    }, [props.wordleState.wordleGame, props.wordleState.currentCol, props.wordleState.currentRow, props.wordleState.currWord, totalGuess]);
 
     function clearWordleState() {
 
@@ -1082,6 +1135,13 @@ export default function Wordle(props) {
 
     return (
         <div id="home" className={props.navState ? "open-home" : "closed-home"}>
+
+
+
+
+
+
+
             <div id="wordle" className='home-text'>
                 <div id="board">
                     <div id="letterTiles">
@@ -1121,6 +1181,23 @@ export default function Wordle(props) {
 
                 </div>
             </div>
+
+
+
+            <div id="icon-attr" class='home-text'>
+
+                Icons by <a href="https://icons8.com/" style={{ textDecoration: "underline" }}>Icons8</a>
+
+            </div>
+
+
+
+
+
+
+
+
+
         </div>
     );
 }

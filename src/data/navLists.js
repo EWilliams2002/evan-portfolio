@@ -27,9 +27,9 @@ export default [
 
 
 
-    {
-        id: 2,
-        titleName: "Links",
-        items: {"Linkedin": 'Linkedin', "GitHub": 'GitHub'}
-    },
+    // {
+    //     id: 2,
+    //     titleName: "Links",
+    //     items: {"Linkedin": 'Linkedin', "GitHub": 'GitHub'}
+    // },
 ]

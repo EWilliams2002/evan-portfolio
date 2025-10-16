@@ -225,7 +225,7 @@ function App() {
         
   
         
-        <div id="home-bar" onClick={() => {setScreen(""); readClicked("Home"); setOpen(true)}}>
+        <div class="home-bar" onClick={() => {setScreen(""); readClicked("Home"); setOpen(true)}}>
               
           <img src={homeIcon} class="hb-item" id="home_icon" alt="..." />
           <p class="hb-item" >Home</p>
@@ -240,6 +240,26 @@ function App() {
         
   
         {navLists}
+
+        <div class='home-bar' onClick=''>
+        
+        
+          {/* <img src={imgSrc} className="hb-item" id="home_icon" alt="..." /> */}
+  
+          {/* <NavItem word={key} /> */}
+  
+  
+        </div>
+
+        <div class='home-bar'  onClick=''>
+        
+        
+          {/* <img src={imgSrc} className="hb-item" id="home_icon" alt="..." />
+  
+          <NavItem word={key} /> */}
+  
+  
+        </div>
               
       </div>
 
@@ -255,11 +275,7 @@ function App() {
 
       {getScreenComponent(screen)}
 
-      <div id="icon-attr">
-
-          Icons by <a href="https://icons8.com/" style={{ textDecoration: "underline" }}>Icons8</a>
-
-      </div>
+      
 
 
 

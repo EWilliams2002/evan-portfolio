@@ -59,6 +59,12 @@ export default function home(props) {
 
 
 
+            <div id="icon-attr" class='home-text'>
+
+                Icons by <a href="https://icons8.com/" style={{ textDecoration: "underline" }}>Icons8</a>
+
+            </div>
+
 
 
         </div>
