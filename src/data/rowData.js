@@ -13,5 +13,13 @@ export default [
       { rowHead: "Adore Dessert Café", rowColOne: "Barista", rowColTwo: "2025-    " },
       { rowHead: "University of Arizona", rowColOne: "Student Game Designer", rowColTwo: "2023-24" }
     ]
-  }
+  },
+
+  {
+    title: "Projects",
+    rows: [
+      { rowHead: "Wordle", rowColOne: "", rowColTwo: "" },
+      
+    ]
+  },
 ]

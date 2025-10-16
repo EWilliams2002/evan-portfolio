@@ -54,7 +54,11 @@ export default function home(props) {
 
 
             {rowData.map((block, idx) => (
-                <HomeBlock block={block} key={idx} />
+                <HomeBlock
+                    block={block}
+                    key={idx}
+                    {...(block.title === "Projects" ? { onRowClick: props.changeScreen } : {})}
+                />
             ))}
 
 

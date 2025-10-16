@@ -25,11 +25,4 @@ export default [
         items: {"Wordle": 'site'} //, "CSP Solver":'prog', "Kanji Review App":'prog' }
     },
 
-
-
-    // {
-    //     id: 2,
-    //     titleName: "Links",
-    //     items: {"Linkedin": 'Linkedin', "GitHub": 'GitHub'}
-    // },
 ]
