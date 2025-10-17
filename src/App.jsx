@@ -38,14 +38,15 @@ function App() {
     currentCol: 0,
     currentRow: 0,
     history: [],
-    nonValidKeys: []
+    nonValidKeys: [],
+    totalGuess: 6
   });
 
 
   function readClicked(param) {
     
     setScreen(param);
-    console.log("screen clicked: " + param);
+    // console.log("screen clicked: " + param);
   }
 
   function getScreenComponent(screen) {

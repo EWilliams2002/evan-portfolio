@@ -7,19 +7,14 @@ import Keyboard from './tinyComp/keyboard'
 import randomWords from '../data/randomWords';
 
 export default function Wordle(props) {
-    // Track clicks and coloring arrays as refs so they persist across renders
+    
     const clicksRef = React.useRef([]);
     const validSpotsRef = React.useRef([]);
     const validLettersRef = React.useRef([]);
     const nonValidRef = React.useRef([]);
-    const wordCheckRef = React.useRef(true);
-    const [gameHistorySlots, setGameHistorySlots] = useState(6);
-    const [totalGuess, setTotalGuess] = useState(6);
-    // let totalGuess = 6;
-    // let gameHistorySlots = 6;
+    
 
-    // Use destructuring for prop values but always get latest inside handlers
-    const { wordleGame, currentRow, currentCol, currWord, history, nonValidKeys } = props.wordleState;
+    const { wordleGame, currentRow, currentCol, currWord, history, nonValidKeys, totalGuess } = props.wordleState;
 
     const updateTilesRef = React.useRef(updateTiles);
     useEffect(() => {
@@ -55,7 +50,7 @@ export default function Wordle(props) {
 
 
             for (let t = 0; t < validLettersRef.current.length; t++) {
-                wordCheckRef.current = false;
+                
                 validLettersRef.current[t].style.backgroundColor = "#dada00";
             }
 
@@ -73,28 +68,43 @@ export default function Wordle(props) {
 
 
         for (let y = 0; y < nonValidRef.current.length; y++) {
-            wordCheckRef.current = false;
+            
             document.getElementById(nonValidRef.current[y]).style.visibility = "hidden";
         }
 
         // Correction pass: check entire board for correct colors and apply corrections
         let rows = document.querySelectorAll(".row");
+
         for (let r = 0; r < props.wordleState.wordleGame.length; r++) {
+
             for (let c = 0; c < props.wordleState.wordleGame[r].length; c++) {
+
                 const letter = props.wordleState.wordleGame[r][c];
                 let currentTile = rows[c].querySelectorAll("div")[r];
+
                 // Only correct color if the letter is present
+
                 if (letter !== '') {
+
                     if (typeof checkSlice === 'function' && checkSlice(props.wordleState.currWord, letter, c)) {
+
                         currentTile.style.backgroundColor = "green";
+
                     } else if (props.wordleState.currWord.includes(letter)) {
+
                         currentTile.style.backgroundColor = "#dada00";
+
                     } else {
+
                         currentTile.style.backgroundColor = "grey";
+
                     }
+
+                    
                 } else {
                     currentTile.style.backgroundColor = "grey";
                 }
+
             }
         }
 
@@ -107,12 +117,17 @@ export default function Wordle(props) {
     }
 
     function runBackspace() {
+
         const row = props.wordleState.currentRow;
         const col = props.wordleState.currentCol;
-        // Remove last click
+
+        
+
         let clicked = clicksRef.current[col - 1];
         clicksRef.current.pop();
-        // Update the tile in state
+
+        
+
         props.setWordleState(prev => {
             let updatedGame = prev.wordleGame.map(arr => [...arr]);
             updatedGame[row][col - 1] = "";
@@ -122,7 +137,9 @@ export default function Wordle(props) {
                 currentCol: col - 1
             };
         });
-        // Remove from coloring
+
+
+        
         if (currWord.includes(clicked)) {
             if (currWord[col - 1] === clicked) {
                 validSpotsRef.current.pop();
@@ -132,15 +149,19 @@ export default function Wordle(props) {
         } else {
             nonValidRef.current.pop();
         }
-        // Clear tile DOM
+
+        
         let rows = document.querySelectorAll(".row");
+
         if (rows.length > 0) {
             let currentTile = rows[col - 1].querySelectorAll("div")[row];
             if (currentTile) currentTile.innerText = "";
         }
+
     }
 
     function checkRightWord(clicked_id, finalRow = false) {
+
         let row = props.wordleState.currentRow;
         let guessedWord = "";
 
@@ -155,7 +176,7 @@ export default function Wordle(props) {
 
             guessedWord += letter;
 
-            console.log('in check right word, checking letter ', letter);
+            // console.log('in check right word, checking letter ', letter);
 
             if (!currWord.includes(letter)) {
 
@@ -178,15 +199,16 @@ export default function Wordle(props) {
         }
         
         
+
         if (guessedWord.trim() === currWord.trim()) {
             changeColor(clicked_id);
-            console.log('correct word');
+            // console.log('correct word');
             return true;
         } else {
 
             if (finalRow) {
                 clearWordleState();
-                console.log('final row');
+                // console.log('final row');
                 let prevWord = document.getElementById("word5").innerText;
                 let prevResult = document.getElementById("result5").innerText;
 
@@ -215,13 +237,13 @@ export default function Wordle(props) {
                         ...prev,
                         history: [...prev.history, { word: currWord, result: "X" }]
                     }));
-                    console.log('updated history:', [...history, { word: currWord, result: "X" }]);
+                    // console.log('updated history:', [...history, { word: currWord, result: "X" }]);
                 } else {
                     props.setWordleState(prev => ({
                         ...prev,
                         history: [...prev.history.slice(1), { word: currWord, result: "X" }]
                     }));
-                    console.log('updated history by shifting:', [...history.slice(1), { word: currWord, result: "X" }]);
+                    // console.log('updated history by shifting:', [...history.slice(1), { word: currWord, result: "X" }]);
                 }
 
                 
@@ -231,33 +253,47 @@ export default function Wordle(props) {
                 // console.log(guessedWord.trim() === currWord.trim());
                 return false;
             }
+
             changeColor(clicked_id);
-            console.log('guessed wrong word but still have guesses left');
+            // console.log('guessed wrong word but still have guesses left');
             return false;
         }
+
+
     }
 
     function updateTiles(clicked_id, loadingBoard = false) {
 
-        // Always use the latest state from props!
+        
         const col = props.wordleState.currentCol;
         const row = props.wordleState.currentRow;
 
+
+
+
         if (col === 5) {
 
+
             if (clicked_id === "Enter") {
+
+                if (!randomWords.includes(wordleGame[row].join(''))) {
+                    alert("Not in word list!");
+                    return;
+                }
 
                 const wordRight = checkRightWord(clicked_id, false);
 
                 if (wordRight) {
-                    console.log('guessed right change word and reset');
+
+
+
+                    
                     // Update history table logic here...
 
                     let prevWord = document.getElementById("word5").innerText;
                     let prevResult = document.getElementById("result5").innerText;
 
-                    // console.log('prev word:', prevWord);
-                    // console.log('prev result:', prevResult);
+
 
                     document.getElementById("word5").innerText = currWord;
                     document.getElementById("result5").innerText = (6 - totalGuess) + 1;
@@ -281,50 +317,34 @@ export default function Wordle(props) {
                             ...prev,
                             history: [...prev.history, { word: currWord, result: (6 - totalGuess) + 1 }]
                         }));
-                        console.log('updated history:', [...history, { word: currWord, result: (6 - totalGuess) + 1 }]);
+                        // console.log('updated history:', [...history, { word: currWord, result: (6 - totalGuess) + 1 }]);
                     } else {
                         props.setWordleState(prev => ({
                             ...prev,
                             history: [...prev.history.slice(1), { word: currWord, result: (6 - totalGuess) + 1 }]
                         }));
-                        console.log('updated history by shifting:', [...history.slice(1), { word: currWord, result: (6 - totalGuess) + 1 }]);
+                        // console.log('updated history by shifting:', [...history.slice(1), { word: currWord, result: (6 - totalGuess) + 1 }]);
                     }
 
                     
 
-                    // if (gameHistorySlots > 0) {
-                    //     document.getElementById("word" + (gameHistorySlots - 1)).innerText = currWord;
-                    //     document.getElementById("result" + (gameHistorySlots - 1)).innerText = (6 - totalGuess) + "/5";
-                    //     setGameHistorySlots(prev => prev - 1);
-
-                        
-                        
-                        
-
-                    // } else {
-                    //     // shift everything up one
-                        
-
-                        
-
-                    //     // the game histtory chart bug is because of this code actually doesnt set anything it justs moves things around
-                    //     // TODO: fix this bug
-                    //     // use stuff shi from line 742 and 743 to fix it
-                    // }
 
                     clearWordleState();
                     return;
                 }
+
                 
                 if (!wordRight && row === 5) {
                     console.log('didnt guess it right and no guesses left');
                 } else {
-                    setTotalGuess(prev => prev - 1);
+                    props.setWordleState(prev => ({
+                        ...prev,
+                        totalGuess: prev.totalGuess - 1
+                    }));
                 }
                 
 
 
-                console.log(col, row)
 
                 if (row === 6 && !wordRight) {
                     
@@ -332,6 +352,7 @@ export default function Wordle(props) {
                     clearWordleState();
                 }
             }
+
 
 
             if (clicked_id === "←" && col >= 1) {
@@ -342,16 +363,27 @@ export default function Wordle(props) {
 
         } else {
 
+
+
+
             if (clicked_id === "←" && col >= 1) {
                 runBackspace();
             }
 
+
             if (col <= 5 && clicked_id !== "←" && clicked_id !== "Enter") {
+
+
+
 
                 clicksRef.current.push(clicked_id);
                 let rows = document.querySelectorAll(".row");
                 let currentColElement = rows[col];
 
+
+
+
+                
                 if (currentColElement) {
 
                     let currentTile = rows[col].querySelectorAll("div")[row];
@@ -378,7 +410,8 @@ export default function Wordle(props) {
                     }
 
                     if (!loadingBoard) {
-                        // Update game board in state
+                        
+
                         props.setWordleState(prev => {
                             
                             let updatedGame = prev.wordleGame.map(arr => [...arr]);
@@ -400,17 +433,31 @@ export default function Wordle(props) {
                     // console.log(currentTile ? "current tile text: " + (currentTile.textContent ? currentTile.textContent : 'none' ) + '\n' + "letter check: " + clicked_id : '');
                 }
             }
+
+
+
+
         }
     }
 
+
+
+
+
+
+
     // Log updated state whenever it changes (for debugging)
     useEffect(() => {
-        console.log('wordleGame updated:', props.wordleState.wordleGame);
-        console.log('currentCol:', props.wordleState.currentCol);
-        console.log('currentRow:', props.wordleState.currentRow);
-        console.log('currWord:', props.wordleState.currWord);
-        console.log('curr total guess', totalGuess);
+        // console.log('wordleGame updated:', props.wordleState.wordleGame);
+        // console.log('currentCol:', props.wordleState.currentCol);
+        // console.log('currentRow:', props.wordleState.currentRow);
+        // console.log('currWord:', props.wordleState.currWord);
+        // console.log('curr total guess', totalGuess);
     }, [props.wordleState.wordleGame, props.wordleState.currentCol, props.wordleState.currentRow, props.wordleState.currWord, totalGuess]);
+
+
+
+
 
     function clearWordleState() {
 
@@ -425,7 +472,12 @@ export default function Wordle(props) {
             letters[j].style.visibility = "visible";
         }
 
-        setTotalGuess(6);
+        props.setWordleState(prev => ({
+            ...prev,
+            totalGuess: 6
+        }));
+
+        console.log('setting total guess')
 
         props.setWordleState(prev => {
             let updatedGame = prev.wordleGame.map(arr => [...arr]);
@@ -439,15 +491,14 @@ export default function Wordle(props) {
                 ["", "", "", "", ""],
             ];
 
-            // let randomWords = ["APPLE", "BERRY", "CHART", "DELTA", "EAGLE", "FRAME", "GRAPE", "HOUSE", "INPUT", "JUMBO", "VALID"];
+            
             // select a random word
             let newWord = randomWords[Math.floor(Math.random() * randomWords.length)];
 
-            console.log('clearing wordle state and new word is:', newWord);
 
             return {
                 ...prev,
-                currWord: newWord, // Make uppercase for consistency
+                currWord: newWord, 
                 wordleGame: updatedGame,
                 currentCol: 0,
                 currentRow: 0,
@@ -456,26 +507,25 @@ export default function Wordle(props) {
         });
     }  
 
-    // const { wordleGame, currentRow, currentCol, currWord, history }
-
     function loadWordleGame() {
 
         let rows = document.querySelectorAll(".row");
 
-        console.log("non valids: " + nonValidKeys);
+        // console.log("non valids: " + nonValidKeys);
 
         for (let r = 0; r < wordleGame.length; r++) {
 
-            // let loadedWord = "";
+            
             
 
             for (let c = 0; c < wordleGame[r].length; c++) {
+
                 if (wordleGame[r][c] === undefined) continue;
-                // console.log(wordleGame[r][c]);
+                
                 let currentTile = rows[c].querySelectorAll("div")[r];
                 const letter = wordleGame[r][c];
 
-                // loadedWord += letter;
+               
 
 
                 currentTile.textContent = letter;
@@ -490,10 +540,6 @@ export default function Wordle(props) {
 
                 }
 
-                // if (c === 4 && loadedWord !== currWord) {
-                //     console.log(loadedWord);
-                //     updateTilesRef.current("Enter", true);
-                // } 
 
             }
 
@@ -552,11 +598,19 @@ export default function Wordle(props) {
 
     // RUN loadWordleGame EVERY TIME WORDLE SCREEN IS SHOWN
     useEffect(() => {
+
         if (props.screen === "Wordle") {
             setTimeout(loadWordleGame, 0);
         }
+
         // Only run when props.screen changes
     }, [props.screen]);
+
+
+
+
+
+
 
     return (
         <div id="home" className={props.navState ? "open-home" : "closed-home"}>
@@ -601,7 +655,18 @@ export default function Wordle(props) {
                     
                     
                     <div id="howTo">
+
                         <h3>How To Play</h3>
+
+                        <ol className="how-to-list">
+                            <li>Type in a valid word into the tiles</li>
+                            <li>Getting the word wrong will use a guess and progress to the next row</li>
+                            <li>Using up all the rows will cause a fail</li>
+                            <li>Guessing the word right will save your game and pick a new word</li>
+                            <li>Tab reload will wipe game history</li>
+                            
+                        </ol>
+
                     </div>
 
                 </div>
@@ -609,16 +674,18 @@ export default function Wordle(props) {
 
 
 
+            
+
+            
+            <div id='return-home' className='home-text' onClick={() => props.changeScreen('')}>Return Home ! </div>
+
+            
+
             <div id="icon-attr" class='home-text'>
 
                 Icons by <a href="https://icons8.com/" style={{ textDecoration: "underline" }}>Icons8</a>
 
             </div>
-
-            
-            <div id='return-home' onClick={() => props.changeScreen('')} style={{ backgroundColor: "red" }} > temp return home button</div>
-
-
 
 
 

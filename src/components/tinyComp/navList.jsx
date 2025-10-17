@@ -3,7 +3,7 @@ import NavItem from "./navItem"
 
 
 
-// At the top of your component file:
+
 const images = import.meta.glob('../../assets/*.png', { eager: true });
 
 export default function navList(props) {
