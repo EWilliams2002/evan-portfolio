@@ -10,6 +10,7 @@ export default [
   {
     title: "Work",
     rows: [
+      { rowHead: "Methodology IT", rowColOne: "Intern", rowColTwo: "2025-    " },
       { rowHead: "Adore Dessert Café", rowColOne: "Barista", rowColTwo: "2025-    " },
       { rowHead: "University of Arizona", rowColOne: "Student Game Designer", rowColTwo: "2023-24" }
     ]
