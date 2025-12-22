@@ -12,6 +12,7 @@ import githubIcon from './assets/GitHub.svg'
 // Components
 import NavList from './components/tinyComp/navList'
 import Wordle from './components/wordle'
+import AIproj from './components/aiproj'
 
 // Data
 import navData from './data/navLists'
@@ -20,11 +21,10 @@ import randomWords from './data/randomWords'
 
 function App() {
 
+  // Static Wordle Logic
   const [open, setOpen] = React.useState(true);
   const [screen, setScreen] = React.useState("");
-
   let newWord = randomWords[Math.floor(Math.random() * randomWords.length)];
-
   const [wordleState, setWordleState] = React.useState({
     currWord: newWord, // Make uppercase for consistency
     wordleGame: [
@@ -41,6 +41,7 @@ function App() {
     nonValidKeys: [],
     totalGuess: 6
   });
+
 
 
   function readClicked(param) {
@@ -60,8 +61,14 @@ function App() {
                   changeScreen = {setScreen}
                   screen={screen}
                 />;
-      case "Photography":
-        return //<Photography />;
+
+
+      case "AI Project":
+        return <AIproj
+
+                />
+
+
       default:
         return <Home 
                   navState={open} 

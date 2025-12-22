@@ -20,6 +20,7 @@ export default [
     title: "Projects",
     rows: [
       { rowHead: "Wordle", rowColOne: "", rowColTwo: "" },
+      { rowHead: "AI CSP Solver", rowColOne: "", rowColTwo: "" },
       
     ]
   },
